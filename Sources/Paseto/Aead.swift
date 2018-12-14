@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Clibsodium
+import ClibsodiumPaseto
 
 public struct Aead {
     public static let nonceBytes = Int(crypto_aead_xchacha20poly1305_ietf_NPUBBYTES)
