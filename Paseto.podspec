@@ -13,7 +13,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Sources/Paseto/**/*'
+  s.source_files = 'Sources/Paseto/**/*', 'include/libsodium/*'
   
   s.dependency 'Sodium'
   
