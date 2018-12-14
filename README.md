@@ -55,11 +55,6 @@ dependencies: [
 ## Dependencies
 The following are automatically resolved when using Swift Package Manager.
 
-* [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
-
-  CryptoSwift provides the secret key cryptography implementations, which are
-  used in Version 1 local Paseto tokens.
-
 * [Swift-Sodium](https://github.com/jedisct1/swift-sodium)
 
   Swift-Sodium provides the public key cryptography implementations, which are
@@ -93,15 +88,7 @@ enable you to even attempt these examples just don't exist.
 Okay, so what does all that look like?
 
 When creating a key, simply append the key type name to the version.
-Let's say we want to generate a new version 1 symmetric key:
-
-```swift
-import Paseto
-let key = Version1.SymmetricKey()
-```
-
-But version 2 is recommended, so let's instead use that. Just change the `1` to
-a `2` (`import Paseto` is assumed hereafter):
+Let's say we want to generate a new version 2 symmetric key:
 ```swift
 let symmetricKey = Version2.SymmetricKey()
 ```
@@ -232,7 +219,7 @@ struct Header {
 }
 ```
 
-where `version` is either `.v1` or `.v2`, and `purpose` is either `.Public` (a
+where `version` is `.v2`, and `purpose` is either `.Public` (a
 signed message) or `.Local` (an encrypted message).
 
 As `Version` and `Purpose` are enums, it is recommended that you use an
@@ -247,12 +234,3 @@ does not correspond to the message's type arguments then the initialiser will fa
 # Supported Paseto Versions
 ## Version 2
 Version 2 (the recommended version by the specification) is fully supported.
-
-## Version 1 (partial)
-Version 1 (the compatibility version) is (ironically) only partially supported
-due to compatibility issues (Swift is a new language 🤷‍♂️).
-
-Version 1 in the local mode (i.e. encrypted payloads using symmetric keys) is
-fully supported.
-Version 1 in the public mode (i.e. signed payloads using asymmetric keys) is
-**not** currently supported.

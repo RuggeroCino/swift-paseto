@@ -93,8 +93,6 @@ where the generic argument is a type of `Module`.
 A `Module` is simply a section of the Paseto API which specifies the version and purpose.
 For example, `Message<Version2.Public>` is a Paseto message which has been signed
 using version 2 of Paseto's ciphersuite selection.
-Whereas `Message<Version1.Local>` is a Paseto message which has been encrypted
-using version 1 of Paseto's ciphersuite selection.
 
 If you have read the original Paseto specification, a `Module` here is analogous to a "Protocol"
 in the specification (though using this as a type name is problematic in Swift – since
@@ -136,12 +134,6 @@ simultaneously):
   guard let header = Util.header(of: message) else { /* message isn't valid, see 1. */ }
 
   switch (header.version, header.purpose) {
-  case (.v1, .Public): /* this is not currently supported */
-  case (.v1, .Local):
-      guard let message = Message<Version1.Local>(message) else {
-          /* message isn't valid, see 1. */
-      }
-      ...
   case (.v2, .Public):
       guard let message = Message<Version2.Public>(message) else {
           /* message isn't valid, see 1. */

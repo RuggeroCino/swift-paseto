@@ -13,7 +13,6 @@ public enum Purpose: String {
 extension Purpose {
     init <P: Payload>(payload: P.Type) {
         switch payload {
-        case is Version1.Local.Payload.Type: self = .Local
         case is Version2.Local.Payload.Type: self = .Local
         case is Version2.Public.Payload.Type: self = .Public
         default: fatalError("All implementations must be enumerated")
